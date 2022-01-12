@@ -14,6 +14,37 @@ import {
 import { HeadWrapper } from './Report.styles';
 
 export function Report() {
+  const [supplyList, setSupplyList] = useState([]);
+  const [demandList, setDemandList] = useState([]);
+
+  useEffect(() => {
+    Axios.get('/api/get/supply')
+      .then(res => setSupplyList(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
+  const delSupplyData = (id) => {
+    Axios.delete(`/api/delete/supply/${id}`)
+      .then(() => {
+        setSupplyList(supplyList.filter(val => val.id !== id));
+      })
+      .catch(err => console.error(err));
+  };
+
+  useEffect(() => {
+    Axios.get('/api/get/demand')
+      .then(res => setDemandList(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
+  const delDemandData = (id) => {
+    Axios.delete(`/api/delete/demand/${id}`)
+      .then(() => {
+        setDemandList(demandList.filter(val => val.id !== id));
+      })
+      .catch(err => console.error(err));
+  };
+
   return (
     <Wrapper>
       <HeadWrapper>
@@ -33,17 +64,20 @@ export function Report() {
             </TRow>
           </TableHead>
           <TableBody>
-            <TRow>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>
-                  <RegularButton>Ubah</RegularButton>
-                  <DestructiveButton>Hapus</DestructiveButton>
-              </TCell>
-            </TRow>
+            {supplyList.map((val) => {
+              return (
+                <TRow key={val.id}>
+                  <TCell>{val.dates}</TCell>
+                  <TCell>{val.id}</TCell>
+                  <TCell>{val.name}</TCell>
+                  <TCell>{val.amount}</TCell>
+                  <TCell>{val.supplier}</TCell>
+                  <TCell>
+                      <RegularButton>Ubah</RegularButton>
+                      <DestructiveButton onClick={() => {delSupplyData(val.id)}}>Hapus</DestructiveButton>
+                  </TCell>
+                </TRow>
+              )})}
           </TableBody>
         </Table>
       </TableWrapper>
@@ -65,17 +99,20 @@ export function Report() {
             </TRow>
           </TableHead>
           <TableBody>
-            <TRow>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>
-                  <RegularButton>Ubah</RegularButton>
-                  <DestructiveButton>Hapus</DestructiveButton>
-              </TCell>
-            </TRow>
+            {demandList.map((val) => {
+              return (
+                <TRow key={val.id}>
+                  <TCell>{val.dates}</TCell>
+                  <TCell>{val.id}</TCell>
+                  <TCell>{val.name}</TCell>
+                  <TCell>{val.amount}</TCell>
+                  <TCell>{val.receiver}</TCell>
+                  <TCell>
+                      <RegularButton>Ubah</RegularButton>
+                      <DestructiveButton onClick={() => {delDemandData(val.id)}}>Hapus</DestructiveButton>
+                  </TCell>
+                </TRow>
+              )})}
           </TableBody>
         </Table>
       </TableWrapper>
