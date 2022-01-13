@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import {
   Wrapper,
@@ -49,7 +50,7 @@ export function Report() {
     <Wrapper>
       <HeadWrapper>
         <Title>Barang Masuk</Title>
-        <RegularButton>Tambah</RegularButton>
+        <RegularButton>Cetak</RegularButton>
       </HeadWrapper>
       <TableWrapper>
         <Table>
@@ -73,7 +74,9 @@ export function Report() {
                   <TCell>{val.amount}</TCell>
                   <TCell>{val.supplier}</TCell>
                   <TCell>
-                      <RegularButton>Ubah</RegularButton>
+                      <Link to={`/update/supply/${val.id}`}>
+                        <RegularButton>Ubah</RegularButton>
+                      </Link>
                       <DestructiveButton onClick={() => {delSupplyData(val.id)}}>Hapus</DestructiveButton>
                   </TCell>
                 </TRow>
@@ -84,7 +87,7 @@ export function Report() {
       <br />
       <HeadWrapper>
         <Title>Barang Keluar</Title>
-        <RegularButton>Tambah</RegularButton>
+        <RegularButton>Cetak</RegularButton>
       </HeadWrapper>
       <TableWrapper>
         <Table>
@@ -108,7 +111,9 @@ export function Report() {
                   <TCell>{val.amount}</TCell>
                   <TCell>{val.receiver}</TCell>
                   <TCell>
-                      <RegularButton>Ubah</RegularButton>
+                      <Link to={`/update/demand/${val.id}`}>
+                        <RegularButton>Ubah</RegularButton>
+                      </Link>
                       <DestructiveButton onClick={() => {delDemandData(val.id)}}>Hapus</DestructiveButton>
                   </TCell>
                 </TRow>

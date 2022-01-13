@@ -9,8 +9,7 @@ import {
   Label,
   Span,
   Input,
-  Select 
-  } from '../../components/index';
+  Select } from '../../components/index';
 import { StyledWrapper, HeadWrapper, TailWrapper } from './Record.styles';
 
 export function Record() {

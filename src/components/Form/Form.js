@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Wrapper } from '../index';
 
 export const FormWrapper = styled.form`
   display: grid;
