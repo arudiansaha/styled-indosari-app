@@ -25,19 +25,19 @@ export function UpdateDemand() {
   const { id } = useParams();
 
   useEffect(() => {
-    Axios.get('/api/get/item')
+    Axios.get('http://localhost:3080/api/get/item')
       .then(res => setItemList(res.data))
       .catch(err => console.error(err));
   }, []);
 
   useEffect(() => {
-    Axios.get('/api/get/receiver')
+    Axios.get('http://localhost:3080/api/get/receiver')
       .then(res => setReceiverList(res.data))
       .catch(err => console.error(err));
   }, []);
 
   const updateDemandData = (id) => {
-    Axios.patch(`/api/update/demand/${id}`, {
+    Axios.patch(`http://localhost:3080/api/update/demand/${id}`, {
       id: id,
       date: date,
       name: name,

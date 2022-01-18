@@ -1,13 +1,51 @@
 import React from 'react';
-import { Wrapper, Title, RegularButton, TableWrapper, Table, TableHead, TableBody, THead, TRow, TCell } from '../../components/index';
-import { HeadWrapper } from './Dashboard.styles';
+import {
+  Wrapper,
+  Title,
+  RegularButton,
+  TableWrapper,
+  Table,
+  TableHead,
+  TableBody,
+  THead,
+  TRow,
+  TCell,
+  Label,
+  Span,
+  Select } from '../../components/index';
+import { StyledText, BoxWrapper, HeadWrapper, Box } from './Dashboard.styles';
 
 export function Dashboard() {
   return (
     <Wrapper>
       <HeadWrapper>
-        <Title>Dashboard</Title>
-        <RegularButton>Tambah</RegularButton>
+        <Title>Transaksi</Title>
+      </HeadWrapper>
+      <BoxWrapper>
+        <Box>
+          <Title>Barang Masuk</Title>
+          <StyledText>70</StyledText>
+        </Box>
+        <Box>
+          <Title>Barang Keluar</Title>
+          <StyledText>70</StyledText>
+        </Box>
+        <Box>
+          <Title>Total Transaksi</Title>
+          <StyledText>70</StyledText>
+        </Box>
+      </BoxWrapper>
+      <br />
+      <HeadWrapper>
+        <Label>
+          <Select>
+            <option>7 Hari</option>
+            <option>30 Hari</option>
+            <option>3 Bulan</option>
+            <option>6 Bulan</option>
+            <option>1 Tahun</option>
+          </Select>
+        </Label>
       </HeadWrapper>
       <TableWrapper>
         <Table>

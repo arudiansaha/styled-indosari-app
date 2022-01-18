@@ -24,25 +24,25 @@ export function Record() {
   const [receiver, setReceiver] = useState('');
 
   useEffect(() => {
-    Axios.get('/api/get/item')
+    Axios.get('http://localhost:3080/api/get/item')
       .then(res => setItemList(res.data))
       .catch(err => console.error(err));
   }, []);
 
   useEffect(() => {
-    Axios.get('/api/get/supplier')
+    Axios.get('http://localhost:3080/api/get/supplier')
       .then(res => setSupplierList(res.data))
       .catch(err => console.error(err));
   }, []);
 
   useEffect(() => {
-    Axios.get('/api/get/receiver')
+    Axios.get('http://localhost:3080/api/get/receiver')
       .then(res => setReceiverList(res.data))
       .catch(err => console.error(err));
   }, []);
 
   const addSupplyData = () => {
-    Axios.post('/api/create/supply', {
+    Axios.post('http://localhost:3080/api/create/supply', {
       date: date,
       name: name,
       amount: amount,
@@ -55,7 +55,7 @@ export function Record() {
   };
 
   const addDemandData = () => {
-    Axios.post('/api/create/demand', {
+    Axios.post('http://localhost:3080/api/create/demand', {
       date: date,
       name: name,
       amount: amount,

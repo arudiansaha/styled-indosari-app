@@ -41,5 +41,6 @@ export const THead = styled.th`
 export const TCell = styled.td`
   color: rgb(82 82 82);
   white-space: normal;
+  border-bottom: 1px solid rgb(229 231 235);
   padding: 0 1.5rem 0 1.5rem;
 `;

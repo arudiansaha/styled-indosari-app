@@ -25,19 +25,19 @@ export function UpdateSupply() {
   const { id } = useParams();
 
   useEffect(() => {
-    Axios.get('/api/get/item')
+    Axios.get('http://localhost:3080/api/get/item')
       .then(res => setItemList(res.data))
       .catch(err => console.error(err));
   }, []);
 
   useEffect(() => {
-    Axios.get('/api/get/supplier')
+    Axios.get('http://localhost:3080/api/get/supplier')
       .then(res => setSupplierList(res.data))
       .catch(err => console.error(err));
   }, []);
 
   const updateSupplyData = (id) => {
-    Axios.patch(`/api/update/supply/${id}`, {
+    Axios.patch(`http://localhost:3080/api/update/supply/${id}`, {
       id: id,
       date: date,
       name: name,

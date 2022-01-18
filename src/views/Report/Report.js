@@ -19,13 +19,13 @@ export function Report() {
   const [demandList, setDemandList] = useState([]);
 
   useEffect(() => {
-    Axios.get('/api/get/supply')
+    Axios.get('http://localhost:3080/api/get/supply')
       .then(res => setSupplyList(res.data))
       .catch(err => console.error(err));
   }, []);
 
   const delSupplyData = (id) => {
-    Axios.delete(`/api/delete/supply/${id}`)
+    Axios.delete(`http://localhost:3080/api/delete/supply/${id}`)
       .then(() => {
         setSupplyList(supplyList.filter(val => val.id !== id));
       })
@@ -33,13 +33,13 @@ export function Report() {
   };
 
   useEffect(() => {
-    Axios.get('/api/get/demand')
+    Axios.get('http://localhost:3080/api/get/demand')
       .then(res => setDemandList(res.data))
       .catch(err => console.error(err));
   }, []);
 
   const delDemandData = (id) => {
-    Axios.delete(`/api/delete/demand/${id}`)
+    Axios.delete(`http://localhost:3080/api/delete/demand/${id}`)
       .then(() => {
         setDemandList(demandList.filter(val => val.id !== id));
       })
