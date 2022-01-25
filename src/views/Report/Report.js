@@ -50,7 +50,9 @@ export function Report() {
     <Wrapper>
       <HeadWrapper>
         <Title>Barang Masuk</Title>
-        <RegularButton>Cetak</RegularButton>
+        <Link to={'/recap/supply'}>
+          <RegularButton>Cetak</RegularButton>
+        </Link>
       </HeadWrapper>
       <TableWrapper>
         <Table>
@@ -87,7 +89,9 @@ export function Report() {
       <br />
       <HeadWrapper>
         <Title>Barang Keluar</Title>
-        <RegularButton>Cetak</RegularButton>
+        <Link to={'/recap/demand'}>
+          <RegularButton>Cetak</RegularButton>
+        </Link>
       </HeadWrapper>
       <TableWrapper>
         <Table>

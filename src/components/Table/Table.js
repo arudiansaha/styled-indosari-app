@@ -18,7 +18,7 @@ export const TableHead = styled.thead`
   background-color: rgb(229 229 229);
   text-transform: uppercase;
   font-size: 0.75rem;
-  line-heigt: 1rem;
+  line-height: 1rem;
 `;
 
 export const TableBody = styled.tbody`
@@ -32,15 +32,15 @@ export const TRow = styled.tr`
 
 export const THead = styled.th`
   text-align: left;
-  text-weight: 400;
+  font-weight: 600;
   color: rgb(38 38 38);
   letter-spacing: 0.05rem;
-  padding: 0rem 1.5rem 0rem 1.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
 `;
 
 export const TCell = styled.td`
   color: rgb(82 82 82);
   white-space: normal;
   border-bottom: 1px solid rgb(229 231 235);
-  padding: 0 1.5rem 0 1.5rem;
+  padding: 0.75rem 1.5rem 0.75rem 1.5rem;
 `;

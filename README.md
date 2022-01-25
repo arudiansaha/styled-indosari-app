@@ -2,6 +2,6 @@
 
 ## ROADMAP
 
-- [ ] Finish restructure
-- [ ] Add dashboard
+- [x] Finish restructure
+- [x] Add dashboard
 - [ ] Add login and register page

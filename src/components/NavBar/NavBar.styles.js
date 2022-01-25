@@ -3,16 +3,13 @@ import { Link } from 'react-router-dom';
 import { Wrapper } from '../index';
 
 export const StyledWrapper = styled(Wrapper)`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   font-weight: 600;
-  border-right: 1px solid rgb(209 213 219);;
-  height: 100vh;
-  width: 16rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 `;
 
 export const Nav = styled.nav`
+  display: flex;
+  justify-content: center;
   padding: 0.5rem;
 `;
 
@@ -24,7 +21,7 @@ export const StyledLink = styled(Link)`
   padding: 0.5rem 2rem 0.5rem 2rem;
 
   &:hover {
-    background-color: rgb(209 213 219);
+    background-color: rgb(212 212 212);
     color: rgb(31 41 55);
   }
 `;

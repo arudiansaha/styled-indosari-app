@@ -1,21 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
+import Axios from 'axios';
 import {
   Wrapper,
   Title,
-  RegularButton,
   TableWrapper,
   Table,
   TableHead,
   TableBody,
   THead,
   TRow,
-  TCell,
-  Label,
-  Span,
-  Select } from '../../components/index';
+  TCell } from '../../components/index';
 import { StyledText, BoxWrapper, HeadWrapper, Box } from './Dashboard.styles';
 
 export function Dashboard() {
+  const [itemList, setItemList] = useState([]);
+  const [supplyList, setSupplyList] = useState([]);
+  const [demandList, setDemandList] = useState([]);
+  const [totalList, setTotalList] = useState([]);
+
+  useEffect(() => {
+    Axios.get('http://localhost:3080/api/get/total/supply')
+      .then(res => setSupplyList(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    Axios.get('http://localhost:3080/api/get/total/demand')
+      .then(res => setDemandList(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    Axios.get('http://localhost:3080/api/get/total')
+      .then(res => setTotalList(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    Axios.get('http://localhost:3080/api/get/total/all')
+      .then(res => setItemList(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <Wrapper>
       <HeadWrapper>
@@ -23,47 +49,50 @@ export function Dashboard() {
       </HeadWrapper>
       <BoxWrapper>
         <Box>
-          <Title>Barang Masuk</Title>
-          <StyledText>70</StyledText>
+          <Title>Total Masuk</Title>
+          {supplyList.map((val) => {
+            return (
+              <StyledText key={val.totalAmount}>{val.totalAmount}</StyledText>
+            )})}
         </Box>
         <Box>
-          <Title>Barang Keluar</Title>
-          <StyledText>70</StyledText>
+          <Title>Total Keluar</Title>
+          {demandList.map((val) => {
+            return (
+              <StyledText key={val.totalAmount}>{val.totalAmount}</StyledText>
+            )})}
         </Box>
         <Box>
           <Title>Total Transaksi</Title>
-          <StyledText>70</StyledText>
+          {totalList.map((val) => {
+            return (
+              <StyledText key={val.totalSum}>{val.totalSum}</StyledText>
+            )})}
         </Box>
       </BoxWrapper>
       <br />
-      <HeadWrapper>
-        <Label>
-          <Select>
-            <option>7 Hari</option>
-            <option>30 Hari</option>
-            <option>3 Bulan</option>
-            <option>6 Bulan</option>
-            <option>1 Tahun</option>
-          </Select>
-        </Label>
-      </HeadWrapper>
-      <TableWrapper>
+     <TableWrapper>
         <Table>
           <TableHead>
             <TRow>
-              <THead>Tanggal</THead>
               <THead>Kode</THead>
               <THead>Nama Barang</THead>
+              <THead>Jumlah (masuk)</THead>
+              <THead>Jumlah (keluar)</THead>
               <THead>Stok</THead>
             </TRow>
           </TableHead>
           <TableBody>
-            <TRow>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-              <TCell>First</TCell>
-            </TRow>
+            {itemList.map((val) => {
+              return (
+                <TRow key={val.id}>
+                  <TCell>{val.id}</TCell>
+                  <TCell>{val.name}</TCell>
+                  <TCell>{val.itemIn}</TCell>
+                  <TCell>{val.itemOut}</TCell>
+                  <TCell>{val.total}</TCell>
+                </TRow>
+              )})}
           </TableBody>
         </Table>
       </TableWrapper>

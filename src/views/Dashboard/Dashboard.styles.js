@@ -14,7 +14,7 @@ export const BoxWrapper = styled(Wrapper)`
 
 export const Box = styled(Wrapper)`
   display: block;
-  background-color: rgb(255 255 255 255);
+  background-color: rgb(255 255 255);
   text-align: center;
   border: none;
   border-radius: 0.75rem;
