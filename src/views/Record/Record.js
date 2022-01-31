@@ -9,8 +9,13 @@ import {
   Label,
   Span,
   Input,
-  Select } from '../../components/index';
-import { StyledWrapper, HeadWrapper, TailWrapper } from './Record.styles';
+  Select
+} from '../../components/index';
+import {
+  StyledWrapper,
+  HeadWrapper,
+  TailWrapper
+} from './Record.styles';
 
 export function Record() {
   const [itemList, setItemList] = useState([]);
@@ -22,6 +27,8 @@ export function Record() {
   const [amount, setAmount] = useState(0);
   const [supplier, setSupplier] = useState('');
   const [receiver, setReceiver] = useState('');
+  const [newName, setNewName] = useState('');
+  const [newSupplierName, setNewSupplierName] = useState('');
 
   useEffect(() => {
     Axios.get('http://localhost:3080/api/get/item')
@@ -44,14 +51,20 @@ export function Record() {
   const addSupplyData = () => {
     Axios.post('http://localhost:3080/api/create/supply', {
       date: date,
-      name: name,
+      name: name || newName,
       amount: amount,
-      supplier: supplier,
+      supplier: supplier || newSupplierName,
       itemId: name,
       supplierId: supplier,
     })
-      .then(res => console.log(res))
-      .catch(err => console.error(err));
+      .then((res) => {
+        console.log(res);
+        alert('Data Barang Tersimpan');
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('Data Tidak Tersimpan!');
+      });
   };
 
   const addDemandData = () => {
@@ -63,8 +76,14 @@ export function Record() {
       itemId: name,
       receiverId: receiver,
     })
-      .then(res => console.log(res))
-      .catch(err => console.error(err));
+      .then((res) => {
+        console.log(res);
+        alert('Data Tersimpan!');
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('Data Tidak Tersimpan!');
+      });
   };
 
   return (
@@ -76,7 +95,10 @@ export function Record() {
         <FormWrapper>
           <Label>
             <Span>Tanggal</Span>
-            <Input type="date" onChange={e => setDate(e.target.value)} />
+            <Input
+              type="date"
+              onChange={e => setDate(e.target.value)}
+            />
           </Label>
           <Label>
             <Span>Nama Barang</Span>
@@ -89,7 +111,11 @@ export function Record() {
           </Label>
           <Label>
             <Span>Jumlah</Span>
-            <Input type="number" placeholder="0" onChange={e => setAmount(e.target.value)}/>
+            <Input
+              type="number"
+              placeholder="0"
+              onChange={e => setAmount(e.target.value)}
+            />
           </Label>
           <Label>
             <Span>Pemasok</Span>
@@ -99,6 +125,22 @@ export function Record() {
                 return <option key={val.id} value={val.name}>{val.name}</option>
               })}
             </Select>
+          </Label>
+          <Label>
+            <Span>Tambah Barang Baru (opsional)</Span>
+            <Input
+              type="text"
+              onChange={e => setNewName(e.target.value)}
+              placeholder="Masukan nama barang"
+            />
+          </Label>
+          <Label>
+            <Span>Tambah Pemasok Baru (opsional)</Span>
+            <Input
+              type="text"
+              onChange={e => setNewSupplierName(e.target.value)}
+              placeholder="Masukan nama pemasok"
+            />
           </Label>
         </FormWrapper>
         <TailWrapper>
@@ -114,7 +156,10 @@ export function Record() {
         <FormWrapper>
           <Label>
             <Span>Tanggal</Span>
-            <Input type="date" onChange={e => setDate(e.target.value)} />
+            <Input
+              type="date"
+              onChange={e => setDate(e.target.value)}
+            />
           </Label>
           <Label>
             <Span>Nama Barang</Span>
@@ -127,7 +172,11 @@ export function Record() {
           </Label>
           <Label>
             <Span>Jumlah</Span>
-            <Input type="number" placeholder="0" onChange={e => setAmount(e.target.value)}/>
+            <Input
+              type="number"
+              placeholder="0"
+              onChange={e => setAmount(e.target.value)}
+            />
           </Label>
           <Label>
             <Span>Penerima</Span>

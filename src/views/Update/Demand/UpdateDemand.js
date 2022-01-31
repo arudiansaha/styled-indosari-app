@@ -10,8 +10,13 @@ import {
   Label,
   Span,
   Input,
-  Select } from '../../../components/index';
-import { StyledWrapper, HeadWrapper, TailWrapper } from './UpdateDemand.styles';
+  Select
+} from '../../../components/index';
+import {
+  StyledWrapper,
+  HeadWrapper,
+  TailWrapper
+} from './UpdateDemand.styles';
 
 export function UpdateDemand() {
   const [itemList, setItemList] = useState([]);
@@ -59,7 +64,10 @@ export function UpdateDemand() {
         <FormWrapper>
           <Label>
             <Span>Tanggal</Span>
-            <Input type="date" onChange={e => setDate(e.target.value)} />
+            <Input
+              type="date"
+              onChange={e => setDate(e.target.value)}
+            />
           </Label>
           <Label>
             <Span>Nama Barang</Span>
@@ -72,7 +80,11 @@ export function UpdateDemand() {
           </Label>
           <Label>
             <Span>Jumlah</Span>
-            <Input type="number" placeholder="0" onChange={e => setAmount(e.target.value)}/>
+            <Input
+              type="number"
+              placeholder="0"
+              onChange={e => setAmount(e.target.value)}
+            />
           </Label>
           <Label>
             <Span>Penerima</Span>

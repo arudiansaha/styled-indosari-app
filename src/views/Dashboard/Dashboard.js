@@ -9,8 +9,14 @@ import {
   TableBody,
   THead,
   TRow,
-  TCell } from '../../components/index';
-import { StyledText, BoxWrapper, HeadWrapper, Box } from './Dashboard.styles';
+  TCell
+} from '../../components/index';
+import {
+  StyledText,
+  BoxWrapper,
+  HeadWrapper,
+  Box
+} from './Dashboard.styles';
 
 export function Dashboard() {
   const [itemList, setItemList] = useState([]);
@@ -54,6 +60,7 @@ export function Dashboard() {
             return (
               <StyledText key={val.totalAmount}>{val.totalAmount}</StyledText>
             )})}
+          <p>(30 Hari terakhir)</p>
         </Box>
         <Box>
           <Title>Total Keluar</Title>
@@ -61,9 +68,10 @@ export function Dashboard() {
             return (
               <StyledText key={val.totalAmount}>{val.totalAmount}</StyledText>
             )})}
+          <p>(30 Hari terakhir)</p>
         </Box>
         <Box>
-          <Title>Total Transaksi</Title>
+          <Title>Barang Tersedia</Title>
           {totalList.map((val) => {
             return (
               <StyledText key={val.totalSum}>{val.totalSum}</StyledText>

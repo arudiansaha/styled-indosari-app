@@ -4,5 +4,12 @@ import { Record } from './Record/Record';
 import { UpdateSupply, UpdateDemand } from './Update/index';
 import { RecapSupply, RecapDemand } from './Recap/index';
 
-export { Dashboard, Report, Record,
-  UpdateSupply, UpdateDemand, RecapSupply, RecapDemand };
+export {
+  Dashboard,
+  Report,
+  Record,
+  UpdateSupply,
+  UpdateDemand,
+  RecapSupply,
+  RecapDemand
+};

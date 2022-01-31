@@ -4,4 +4,4 @@
 
 - [x] Finish restructure
 - [x] Add dashboard
-- [ ] Add login and register page
+- [x] Add print feature
